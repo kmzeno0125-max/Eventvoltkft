@@ -231,9 +231,12 @@ export default function Contact() {
       if (typeof window.fbq === 'function') {
         window.fbq('track', 'Lead');
       }
-      if (window.dataLayer) {
-        window.dataLayer.push({ event: 'lead_submitted' });
-      }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'form_submit_success',
+        user_email: form.email,
+        user_phone: form.phone,
+      });
 
       setStatus('success');
       setForm(INITIAL);
