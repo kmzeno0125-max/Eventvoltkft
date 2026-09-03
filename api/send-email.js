@@ -2,7 +2,7 @@ const WEBHOOK_URL =
   "https://services.leadconnectorhq.com/hooks/JqQkJazEyR4S93FfxcwC/webhook-trigger/4fed15e8-7427-4265-945b-c04f1a6478f4";
 
 async function sendEmail(payload) {
-  const { name, company, email, phone, service, message } = payload;
+  const { name, company, email, phone, service, message, planned_timing, customer_type } = payload;
 
   const html = `
     <h2>Új árajánlatkérés érkezett</h2>
@@ -10,7 +10,9 @@ async function sendEmail(payload) {
     <p><strong>Cég:</strong> ${company}</p>
     <p><strong>Email:</strong> ${email}</p>
     <p><strong>Telefon:</strong> ${phone}</p>
-    <p><strong>Szolgáltatás:</strong> ${service}</p>
+    <p><strong>Érdeklődés tárgya:</strong> ${service}</p>
+    <p><strong>Tervezett időzítés:</strong> ${planned_timing || "–"}</p>
+    <p><strong>Érdeklődő típusa:</strong> ${customer_type || "–"}</p>
     <p><strong>Üzenet:</strong></p>
     <p>${message || "–"}</p>
   `;
@@ -64,7 +66,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { name, company, email, phone, service, message } = req.body || {};
+  const { name, company, email, phone, service, message, planned_timing, customer_type } = req.body || {};
 
   if (!name || !company || !email || !phone || !service) {
     return res
@@ -72,7 +74,7 @@ export default async function handler(req, res) {
       .json({ error: "Hiányzó kötelező mező: name, company, email, phone, service" });
   }
 
-  const payload = { name, company, email, phone, service, message };
+  const payload = { name, company, email, phone, service, message, planned_timing, customer_type };
 
   const results = await Promise.allSettled([
     sendEmail(payload),
