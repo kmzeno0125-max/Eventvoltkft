@@ -13,6 +13,8 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ReferencesPage from '@/pages/ReferencesPage';
 import ServicesPage from '@/pages/ServicesPage';
+import AboutPage from '@/pages/AboutPage';
+import ContactPage from '@/pages/ContactPage';
 import ScrollToTop from '@/components/ScrollToTop';
 import CookieConsent from '@/components/CookieConsent';
 
@@ -83,6 +85,8 @@ function AppContent() {
         <Route path="/" element={<HomePage introComplete={introComplete} />} />
         <Route path="/referenciak" element={<ReferencesPage />} />
         <Route path="/szolgaltatasok" element={<ServicesPage />} />
+        <Route path="/rolunk" element={<AboutPage />} />
+        <Route path="/kapcsolat" element={<ContactPage />} />
       </Routes>
     </>
   );

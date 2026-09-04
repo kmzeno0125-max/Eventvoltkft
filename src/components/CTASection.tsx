@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight, Phone } from 'lucide-react';
 
@@ -100,8 +101,8 @@ export default function CTASection() {
           transition={{ duration: 0.7, ease, delay: 0.4 }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
         >
-          <a
-            href="#kapcsolat"
+          <Link
+            to="/kapcsolat"
             className="group inline-flex items-center gap-2 px-8 py-4 bg-amber hover:bg-amber-hover text-white font-heading font-bold text-lg rounded transition-colors duration-200"
           >
             Ingyenes árajánlat
@@ -109,7 +110,7 @@ export default function CTASection() {
               size={20}
               className="transition-transform duration-200 group-hover:translate-x-1"
             />
-          </a>
+          </Link>
 
           <a
             href="tel:+36303067031"

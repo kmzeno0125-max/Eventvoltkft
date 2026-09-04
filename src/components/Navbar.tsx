@@ -6,9 +6,9 @@ import { Menu, X, Phone } from 'lucide-react';
 const NAV_LINKS = [
   { label: 'Főoldal', href: '/' },
   { label: 'Szolgáltatások', href: '/szolgaltatasok' },
-  { label: 'Rólunk', href: '/#rolunk' },
+  { label: 'Rólunk', href: '/rolunk' },
   { label: 'Referenciák', href: '/referenciak' },
-  { label: 'Kapcsolat', href: '/#kapcsolat' },
+  { label: 'Kapcsolat', href: '/kapcsolat' },
 ];
 
 export default function Navbar({ visible }: { visible: boolean }) {
@@ -34,6 +34,7 @@ export default function Navbar({ visible }: { visible: boolean }) {
 
     if (href === '/referenciak') {
       navigate('/referenciak');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
@@ -43,23 +44,22 @@ export default function Navbar({ visible }: { visible: boolean }) {
       return;
     }
 
-    if (href === '/') {
-      navigate('/');
+    if (href === '/rolunk') {
+      navigate('/rolunk');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
-    // Anchor links like /#szolgaltatasok
-    const anchor = href.replace('/', '');
-    if (location.pathname !== '/') {
+    if (href === '/kapcsolat') {
+      navigate('/kapcsolat');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (href === '/') {
       navigate('/');
-      setTimeout(() => {
-        const el = document.querySelector(anchor);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    } else {
-      const el = document.querySelector(anchor);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
     }
   }
 
@@ -98,7 +98,9 @@ export default function Navbar({ visible }: { visible: boolean }) {
                 onClick={(e) => handleNavClick(e, link.href)}
                 className={`text-[17px] font-heading font-semibold transition-colors duration-200 relative group ${
                   ((location.pathname === '/referenciak' && link.href === '/referenciak') ||
-                   (location.pathname === '/szolgaltatasok' && link.href === '/szolgaltatasok'))
+                   (location.pathname === '/szolgaltatasok' && link.href === '/szolgaltatasok') ||
+                   (location.pathname === '/rolunk' && link.href === '/rolunk') ||
+                   (location.pathname === '/kapcsolat' && link.href === '/kapcsolat'))
                     ? 'text-amber'
                     : 'text-charcoal/70 hover:text-charcoal'
                 }`}
@@ -122,8 +124,8 @@ export default function Navbar({ visible }: { visible: boolean }) {
                 <span className="text-sm">+36 30 306 7031</span>
               </a>
               <a
-                href="/#kapcsolat"
-                onClick={(e) => handleNavClick(e, '/#kapcsolat')}
+                href="/kapcsolat"
+                onClick={(e) => handleNavClick(e, '/kapcsolat')}
                 className="px-6 py-2.5 bg-amber text-white text-base font-heading font-semibold hover:bg-amber-hover transition-colors duration-200"
               >
                 Ingyenes árajánlat
@@ -131,8 +133,8 @@ export default function Navbar({ visible }: { visible: boolean }) {
             </div>
             {/* Mobile: CTA only (phone is floating button) */}
             <a
-              href="/#kapcsolat"
-              onClick={(e) => handleNavClick(e, '/#kapcsolat')}
+              href="/kapcsolat"
+              onClick={(e) => handleNavClick(e, '/kapcsolat')}
               className="md:hidden inline-flex items-center px-5 py-2.5 bg-amber hover:bg-amber-hover text-white text-base font-heading font-semibold rounded transition-colors duration-200"
             >
               Ingyenes árajánlat
@@ -176,10 +178,10 @@ export default function Navbar({ visible }: { visible: boolean }) {
                 </motion.a>
               ))}
               <a
-                href="/#kapcsolat"
+                href="/kapcsolat"
                 onClick={(e) => {
                   setMenuOpen(false);
-                  handleNavClick(e, '/#kapcsolat');
+                  handleNavClick(e, '/kapcsolat');
                 }}
                 className="mt-4 inline-flex items-center px-6 py-3 bg-amber hover:bg-amber-hover text-white font-heading font-semibold rounded transition-colors"
               >

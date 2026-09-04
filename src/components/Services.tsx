@@ -286,8 +286,8 @@ export default function Services() {
                 className="transition-transform duration-200 group-hover:translate-x-1"
               />
             </Link>
-            <a
-              href="#kapcsolat"
+            <Link
+              to="/kapcsolat"
               className="group inline-flex items-center gap-2 text-amber hover:text-amber-hover font-heading font-semibold text-base transition-colors duration-200"
             >
               Nem találja, amit keres? Kérjen ingyenes árajánlatot
@@ -295,7 +295,7 @@ export default function Services() {
                 size={18}
                 className="transition-transform duration-200 group-hover:translate-x-1"
               />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>

@@ -170,11 +170,8 @@ function useSEO(title: string, description: string) {
 function useGoToContact() {
   const navigate = useNavigate();
   return useCallback(() => {
-    navigate('/');
-    setTimeout(() => {
-      const el = document.querySelector('#kapcsolat');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 120);
+    navigate('/kapcsolat');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [navigate]);
 }
 

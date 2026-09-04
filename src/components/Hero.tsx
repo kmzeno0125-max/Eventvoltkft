@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 
 const HERO_IMAGE = '/images/eventvolt-hero-villanyszereles-01.jpg';
@@ -71,8 +72,8 @@ export default function Hero({ visible }: { visible: boolean }) {
               transition={{ duration: 0.7, ease, delay: 0.55 }}
               className="mt-10 flex flex-wrap gap-4"
             >
-              <a
-                href="#kapcsolat"
+              <Link
+                to="/kapcsolat"
                 className="group inline-flex items-center gap-2 px-7 py-3.5 bg-amber hover:bg-amber-hover text-white font-heading font-semibold rounded transition-colors duration-200"
               >
                 Ingyenes árajánlat
@@ -80,13 +81,13 @@ export default function Hero({ visible }: { visible: boolean }) {
                   size={18}
                   className="transition-transform duration-200 group-hover:translate-x-1"
                 />
-              </a>
-              <a
-                href="#szolgaltatasok"
+              </Link>
+              <Link
+                to="/szolgaltatasok"
                 className="inline-flex items-center gap-2 px-7 py-3.5 border-2 border-charcoal/15 hover:border-amber text-charcoal font-heading font-semibold rounded transition-colors duration-200"
               >
                 Szolgáltatásaink
-              </a>
+              </Link>
             </motion.div>
           </div>
 

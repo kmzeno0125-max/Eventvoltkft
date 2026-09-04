@@ -440,11 +440,8 @@ function ReferencesCTA() {
         >
           <button
             onClick={() => {
-              navigate('/');
-              setTimeout(() => {
-                const el = document.querySelector('#kapcsolat');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }, 100);
+              navigate('/kapcsolat');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className="group inline-flex items-center gap-2 px-8 py-4 bg-amber hover:bg-amber-hover text-white font-heading font-bold text-lg rounded transition-colors duration-200"
           >

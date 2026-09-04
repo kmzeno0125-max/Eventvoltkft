@@ -3,9 +3,9 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 const NAV_LINKS = [
   { label: 'Főoldal', href: '/' },
   { label: 'Szolgáltatások', href: '/szolgaltatasok' },
-  { label: 'Rólunk', href: '/#rolunk' },
+  { label: 'Rólunk', href: '/rolunk' },
   { label: 'Referenciák', href: '/referenciak' },
-  { label: 'Kapcsolat', href: '/#kapcsolat' },
+  { label: 'Kapcsolat', href: '/kapcsolat' },
 ];
 
 export default function Footer() {
@@ -14,25 +14,9 @@ export default function Footer() {
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
-    if (href === '/referenciak' || href === '/szolgaltatasok') {
+    if (href === '/referenciak' || href === '/szolgaltatasok' || href === '/rolunk' || href === '/kapcsolat') {
       navigate(href);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    // Homepage routes with hash
-    if (href.startsWith('/#')) {
-      const target = href.slice(1);
-      if (location.pathname !== '/') {
-        navigate('/');
-        setTimeout(() => {
-          const el = document.querySelector(target);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 120);
-      } else {
-        const el = document.querySelector(target);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-        else window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
       return;
     }
     if (href === '/') {
