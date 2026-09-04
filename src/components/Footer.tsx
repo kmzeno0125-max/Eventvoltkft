@@ -138,6 +138,12 @@ export default function Footer() {
           <p className="text-white/30 font-body text-xs">
             &copy; 2025 EventVolt Kft. Minden jog fenntartva.
           </p>
+          <button
+            onClick={() => window.openCookieSettings?.()}
+            className="text-white/30 hover:text-amber font-body text-xs transition-colors duration-200 cursor-pointer"
+          >
+            Süti beállítások
+          </button>
           <div className="flex items-center gap-1.5">
             <span className="w-4 h-[2px] bg-amber/40" />
             <Zap size={12} className="text-amber/50" />

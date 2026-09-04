@@ -14,6 +14,7 @@ import Footer from '@/components/Footer';
 import ReferencesPage from '@/pages/ReferencesPage';
 import ServicesPage from '@/pages/ServicesPage';
 import ScrollToTop from '@/components/ScrollToTop';
+import CookieConsent from '@/components/CookieConsent';
 
 const INTRO_KEY = 'eventvolt-intro-played';
 
@@ -77,6 +78,7 @@ function AppContent() {
         <CinematicIntro onComplete={handleIntroComplete} />
       )}
       <ScrollToTop />
+      <CookieConsent />
       <Routes>
         <Route path="/" element={<HomePage introComplete={introComplete} />} />
         <Route path="/referenciak" element={<ReferencesPage />} />
