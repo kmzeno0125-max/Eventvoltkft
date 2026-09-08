@@ -123,9 +123,7 @@ export default function Testimonials() {
                     <span className="hidden sm:block w-8 h-[2px] bg-amber" />
                     <span className="font-body text-sm text-charcoal/50">{active.project}</span>
                   </div>
-                  <p className="mt-5 text-xs font-body text-charcoal/35">
-                    Fejlesztési minta – publikálás előtt valódi ügyfélvéleményre cserélendő.
-                  </p>
+                  <p className="mt-5 text-xs font-body text-charcoal/35"></p>
                 </motion.div>
               </AnimatePresence>
 
